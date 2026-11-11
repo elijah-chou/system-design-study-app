@@ -184,3 +184,10 @@ system-design-study-app/
 ├── tsconfig.json
 └── vite.config.ts
 ```
+
+## CI/CD
+
+- **CI** (`.github/workflows/ci.yml`, push/PR to `main`): `tsc --noEmit`, `validate:content`, `test:coverage` (Vitest + v8, coverage uploaded to Codecov), `build`.
+- **Deploy** (`.github/workflows/deploy.yml`, push to `main`): runs CI as a gate, then deploys to Vercel production via the Vercel CLI (the project has no Git integration).
+- Required repository secrets: `CODECOV_TOKEN`, `VERCEL_TOKEN`, `VERCEL_ORG_ID`, `VERCEL_PROJECT_ID`.
+- Local: `npm test`, `npm run test:coverage`.

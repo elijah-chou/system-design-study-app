@@ -6,6 +6,9 @@ export default defineConfig({
   test: {
     environment: 'jsdom',
     globals: true,
+    fileParallelism: false,
+    pool: 'threads',
+    testTimeout: 20000,
     setupFiles: ['./vitest.setup.ts'],
     include: ['src/**/*.test.{ts,tsx}'],
     coverage: {
@@ -15,10 +18,10 @@ export default defineConfig({
       include: ['src/**/*.{ts,tsx}'],
       exclude: ['**/*.d.ts', '**/*.test.{ts,tsx}', 'src/main.tsx', 'src/types/**'],
       thresholds: {
-        lines: 50,
-        functions: 50,
-        branches: 50,
-        statements: 50,
+        lines: 85,
+        functions: 75,
+        branches: 75,
+        statements: 85,
       },
     },
   },

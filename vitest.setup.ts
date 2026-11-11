@@ -40,3 +40,19 @@ Object.defineProperty(window, 'matchMedia', {
 });
 
 window.HTMLElement.prototype.scrollIntoView = () => {};
+
+if (!navigator.clipboard) {
+  Object.defineProperty(navigator, 'clipboard', {
+    writable: true,
+    configurable: true,
+    value: {
+      writeText: () => Promise.resolve(),
+      readText: () => Promise.resolve(''),
+    },
+  });
+}
+
+if (!window.URL.createObjectURL) {
+  window.URL.createObjectURL = () => 'blob:mock';
+  window.URL.revokeObjectURL = () => {};
+}

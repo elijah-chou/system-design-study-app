@@ -188,6 +188,6 @@ system-design-study-app/
 ## CI/CD
 
 - **CI** (`.github/workflows/ci.yml`, push/PR to `main`): `tsc --noEmit`, `validate:content`, `test:coverage` (Vitest + v8, coverage uploaded to Codecov), `build`.
-- **Deploy** (`.github/workflows/deploy.yml`, push to `main`): runs CI as a gate, then deploys to Vercel production via the Vercel CLI (the project has no Git integration).
-- Required repository secrets: `CODECOV_TOKEN`, `VERCEL_TOKEN`, `VERCEL_ORG_ID`, `VERCEL_PROJECT_ID`.
+- **Deploy**: handled by Vercel's GitHub integration (every merge to `main` deploys to production; PRs get previews). No deploy workflow or Vercel token needed.
+- Optional repository secret: `CODECOV_TOKEN`.
 - Local: `npm test`, `npm run test:coverage`.

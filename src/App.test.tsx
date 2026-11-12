@@ -26,6 +26,8 @@ describe('App', () => {
       act(() => setView(v));
       expect(container.querySelector('main')!.childElementCount).toBeGreaterThan(0);
     }
+    act(() => setView('unknown-view' as ViewId));
+    expect(container.querySelector('main')!.childElementCount).toBeGreaterThan(0);
   });
 });
 
